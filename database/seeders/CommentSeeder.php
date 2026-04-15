@@ -2,19 +2,16 @@
 
 namespace Database\Seeders;
 
+use App\Models\Comment;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class DatabaseSeeder extends Seeder
+class CommentSeeder extends Seeder
 {
     use WithoutModelEvents;
 
     public function run(): void
     {
-        $this->call([
-            UserSeeder::class,
-            PostSeeder::class,
-            CommentSeeder::class,
-        ]);
+        Comment::factory(100)->create();
     }
 }
