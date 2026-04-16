@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Comment;
@@ -13,7 +13,7 @@ class CommentController extends Controller
 
     public function indexForPost($postId)
     {
-        $comments = Comment::where('post_id', $postId)->get();
+        $comments = Comment::where('post_id', $postId)->with('user')->latest()->get();
         return response()->json([
             'success' => true,
             'message' => 'Comments fetched successfully',
@@ -38,7 +38,7 @@ class CommentController extends Controller
         return response()->json([
             'success' => true,
             'message' => 'Comment created successfully',
-            'data' => $comment
+            'data' => $comment->load('user')
         ]);
     }
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Post;
@@ -14,7 +14,7 @@ class PostController extends Controller
         return response()->json([
             'success' => true,
             'message' => 'Posts fetched successfully',
-            'data' => Post::all()
+            'data' => Post::with('user')->latest()->get()
         ]);
     }
 
@@ -41,7 +41,7 @@ class PostController extends Controller
         return response()->json([
             'success' => true,
             'message' => 'Post created successfully',
-            'data' => $post
+            'data' => $post->load('user')
         ]);
     }
 
@@ -57,7 +57,7 @@ class PostController extends Controller
         return response()->json([
             'success' => true,
             'message' => 'Post fetched successfully',
-            'data' => $post
+            'data' => $post->load('user')
         ]);
     }
 
@@ -76,7 +76,7 @@ class PostController extends Controller
         return response()->json([
             'success' => true,
             'message' => 'Post edit page',
-            'data' => $post
+            'data' => $post->load('user')
         ]);
     }
 
@@ -96,7 +96,7 @@ class PostController extends Controller
         return response()->json([
             'success' => true,
             'message' => 'Post updated successfully',
-            'data' => $post
+            'data' => $post->load('user')
         ]);
     }
 
