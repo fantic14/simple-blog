@@ -67,4 +67,25 @@ class PostPolicyTest extends TestCase
 
         $this->assertFalse($this->policy->create($user));
     }
+
+    public function test_admin_can_delete_any_post(): void
+    {
+        $admin = User::factory()->create(['role' => 'admin']);
+
+        $postAuthor = User::factory()->create();
+
+        $post = Post::factory()->for($postAuthor)->create();
+
+        $this->assertTrue($admin->can('delete', $post));
+    }
+
+    public function test_admin_can_update_any_post(): void
+    {
+        $admin = User::factory()->create(['role' => 'admin']);
+
+        $postAuthor = User::factory()->create();
+        $post = Post::factory()->for($postAuthor)->create();
+
+        $this->assertTrue($admin->can('update', $post));
+    }
 }

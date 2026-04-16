@@ -37,7 +37,6 @@ class CommentPolicyTest extends TestCase
         $post          = Post::factory()->for($postOwner)->create();
         $comment       = Comment::factory()->for($post)->for($commentAuthor)->create();
 
-        // Load the post relationship so the policy can resolve post->user_id
         $comment->load('post');
 
         $this->assertTrue($this->policy->delete($postOwner, $comment));
@@ -54,6 +53,16 @@ class CommentPolicyTest extends TestCase
         $comment->load('post');
 
         $this->assertFalse($this->policy->delete($stranger, $comment));
+    }
+
+    public function test_admin_can_delete_any_comment(): void
+    {
+        $admin = User::factory()->create(['role' => 'admin']);
+        $commentAuthor = User::factory()->create();
+        $post = Post::factory()->for(User::factory())->create();
+        $comment = Comment::factory()->for($post)->for($commentAuthor)->create();
+
+        $this->assertTrue($admin->can('delete', $comment));
     }
 
     public function test_view_any_always_returns_false(): void
