@@ -1,0 +1,29 @@
+services:
+  backend:
+    build:
+      context: ./blog-app
+    container_name: ominimo_backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./blog-app:/var/www
+    networks:
+      - ominimo_network
+
+  frontend:
+    build:
+      context: ./blog-frontend
+    container_name: ominimo_frontend
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./blog-frontend:/app
+      - /app/node_modules
+    networks:
+      - ominimo_network
+    depends_on:
+      - backend
+
+networks:
+  ominimo_network:
+    driver: bridge
