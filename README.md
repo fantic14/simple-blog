@@ -5,5 +5,5 @@ The README file for the backend is located in the [blog-app](./blog-app) directo
 To build and run the application using Docker, execute the following command from the root folder:
 
 ```bash
-docker-compose up --build
+docker compose up --build
 ```
