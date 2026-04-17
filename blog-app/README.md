@@ -21,7 +21,7 @@ Full-stack blog application built with **Laravel** and **React**. This project f
 
 ### Backend
 - **Framework**: Laravel 13
-- **Language**: PHP 8.2+
+- **Language**: PHP 8.4
 - **Authentication**: Laravel Sanctum
 - **Database**: SQLite
 
@@ -39,7 +39,7 @@ Full-stack blog application built with **Laravel** and **React**. This project f
 Follow these steps to set up the project locally.
 
 ### Prerequisites
-- [PHP 8.2+](https://www.php.net/)
+- [PHP 8.4](https://www.php.net/)
 - [Composer](https://getcomposer.org/)
 - [Node.js](https://nodejs.org/) & [pnpm](https://pnpm.io/)
 - [SQLite](https://www.sqlite.org/index.html)
@@ -49,7 +49,7 @@ Follow these steps to set up the project locally.
 1. **Clone the repository**:
    ```bash
    git clone https://github.com/fantic14/simple-blog.git
-   cd simple-blog
+   cd simple-blog/blog-app
    ```
 
 2. **Install dependencies**:
