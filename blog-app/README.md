@@ -79,7 +79,7 @@ Follow these steps to set up the project locally.
 
 1. **Navigate to the frontend directory**:
    ```bash
-   cd blog-frontend
+   cd simple-blog/blog-frontend
    ```
 
 2. **Install dependencies**:
